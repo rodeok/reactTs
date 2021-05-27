@@ -23,10 +23,10 @@ const App: FC = () => {
     setDealine(0);
   };
 
-  const completeTask = (taskNameToDelete: string): void => {
+  const completeTask = (taskNameToDelete: number): void => {
     setTodoList(
-      todoList.filter((task) => {
-        return task.taskName != taskNameToDelete;
+      todoList.filter((task, id) => {
+        return id != taskNameToDelete;
       })
     );
   };
@@ -54,7 +54,7 @@ const App: FC = () => {
       </div>
       <div className="todoList">
         {todoList.map((task: ITask, key: number) => {
-          return <TodoTask key={key} task={task} completeTask={completeTask} />;
+          return <TodoTask id={key} key={key}  task={task} completeTask={completeTask} />;
         })}
       </div>
     </div>
